@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Superhostsol - Increase Airbnb bookings</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">Superhostsol</div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <button class="cta-button">Get Started</button>
+    </header>
+
+    <section id="home" class="flex-container">
+        <div class="text-content">
+            <h1>Boost bookings, optimise listings with pros</h1>
+            <p>Our dedicated cohost experts ensure your properties run smoothly so you can maximise time & investment.</p>
+            <a href="#services" class="learn-more-button">Learn More</a>
+        </div>
+        <div class="image-content">
+            <img src="1.jpg" alt="Home Image">
+        </div>
+    </section>
+
+    <section id="services">
+        <h2>Cohost with professional hospitality hosts for optimal Airbnb success</h2>
+        <p>As a dedicated cohosting team for Airbnb hosts, Superhostsol handles all aspects of listing management from cleaning to communication so owners can sit back while we take care of the details.</p>
+        <p>Rent luxury homes with superb style from our handpicked team of hospitality all-stars. We craft five-star stays with pro photos, quick communication, and white-glove quality control.</p>
+        <p>By optimizing listings for maximum occupancy and seamless guest experiences, Superhostsol enables owners to focus on enjoying rental income rather than day-to-day hosting tasks.</p>
+        <blockquote>
+            <p>"I was struggling to keep up with managing my 3 Airbnb properties while working a full-time job. Superhostsol's co-hosting services have been a total game changer. Now I have more free time while still providing excellent guest experiences and earning great returns."</p>
+            <footer>— Michael R., Airbnb Host in Los Angeles</footer>
+        </blockquote>
+    </section>
+
+    <section id="reviews">
+        <h2>Returning Guests</h2>
+        <img src="3.jpg" alt="Returning Guests Review">
+    </section>
+    
+    <section id="ratings">
+        <h2>Ratings</h2>
+        <img src="2.jpg" alt="Returning Guests Review">
+    </section>
+
+    <section id="customer">
+        <h2>Customer reviews</h2>
+        <img src="5.jpg" alt="Returning Guests Review">
+    </section>
+
+    <section id="contact">
+        <h2>Increase Bookings with Superhostsol</h2>
+        <p>As an experienced Airbnb cohosting team handling everything for property owners, Superhostsol can optimize your listing and increase bookings through expert photography, pricing strategies, marketing, and responsive communication with guests.</p>
+        <button class="contact-button">Let's Talk</button>
+
+        <h2>Contact Us</h2>
+        <form id="contactForm" class="contact-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+            
+            <button type="submit" class="submit-button">Send Message</button>
+        </form>
+        <div id="responseMessage"></div>
+
+        <script>
+            document.getElementById("contactForm").addEventListener("submit", function(event) {
+                event.preventDefault(); // Prevent the form from submitting normally
+
+                var formData = new FormData(this); // Create FormData object from form
+                var xhr = new XMLHttpRequest(); // Create new XMLHttpRequest object
+
+                xhr.open("POST", "send_mail.php", true); // Specify POST request to send_mail.php (or your backend script)
+
+                // Handle response from server
+                xhr.onload = function() {
+                    if (xhr.status === 200) {
+                        document.getElementById("responseMessage").textContent = xhr.responseText;
+                        document.getElementById("contactForm").reset(); // Reset form if submission was successful
+                    } else {
+                        document.getElementById("responseMessage").textContent = 'Failed to send message. Please try again later.';
+                    }
+                };
+
+                // Send FormData to server
+                xhr.send(formData);
+            });
+        </script>
+    </section>
+</body>
+</html>
